@@ -7,6 +7,7 @@
 [![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?logo=github-actions&logoColor=white)](https://github.com/features/actions)
 [![Docker Hub](https://img.shields.io/badge/Registry-Docker%20Hub-0db7ed?logo=docker&logoColor=white)](https://hub.docker.com/)
 [![Tests](https://img.shields.io/badge/Testing-Pytest%20%7C%20Flake8-brightgreen)](https://docs.pytest.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 An enterprise-grade continuous integration and continuous deployment (CI/CD) reference architecture demonstrating how to containerize a Python Flask microservice using production-hardened Docker standards and automate its testing, building, validation, and container image publishing to **Docker Hub** using **GitHub Actions**.
 
@@ -36,6 +37,7 @@ Every code push and pull request undergoes automated code-quality linting, unit 
 - [Configuring GitHub Actions Secrets for Docker Hub](#configuring-github-actions-secrets-for-docker-hub)
 - [Production Runbook & Rollback Strategy](#production-runbook--rollback-strategy)
 - [Troubleshooting Matrix](#troubleshooting-matrix)
+- [License](#license)
 
 ---
 
@@ -329,3 +331,10 @@ docker run -d \
 | **Docker Hub 401 Unauthorized** | Missing or incorrect GitHub repository secrets. | GitHub Actions logs for `Log in to Docker Hub` | Re-verify `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` in repo settings. |
 | **Smoke check failure in CI** | WSGI failed to bind or `/health` returned non-200. | GitHub Actions logs for `Run Basic Health Check` | Inspect Gunicorn startup flags and check application port binding. |
 | **Container unhealthy in `docker ps`** | Missing `curl` utility or endpoint timeout. | `docker inspect --format='{{json .State.Health}}' <id>` | Verify curl is installed in `Dockerfile` and endpoint responds within 5s. |
+
+---
+
+## License
+
+This project is licensed under the terms of the [MIT License](LICENSE). Copyright &copy; 2026 Rudrali Solapure.
+
