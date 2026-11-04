@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dockerized Flask App | CI/CD Pipeline</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #090d16 0%, #111827 100%);
+            color: #f3f4f6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(31, 41, 55, 0.85);
+            border: 1px solid #374151;
+            backdrop-filter: blur(16px);
+            border-radius: 16px;
+            max-width: 640px;
+            width: 100%;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        .badge {
+            background-color: #10b981;
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        h1 {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        p.subtitle {
+            color: #9ca3af;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .card {
+            background: #111827;
+            border: 1px solid #374151;
+            padding: 16px;
+            border-radius: 10px;
+        }
+        .card .title {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+        .card .val {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #38bdf8;
+            word-break: break-all;
+        }
+        .links {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .btn {
+            display: inline-block;
+            background: #2563eb;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #1d4ed8;
+        }
+        .btn-secondary {
+            background: #374151;
+        }
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        footer {
+            border-top: 1px solid #374151;
+            padding-top: 16px;
+            font-size: 0.85rem;
+            color: #6b7280;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">Healthy &bull; Active</span>
+            <span style="color: #9ca3af; font-size: 0.85rem;">{{ server_time }}</span>
+        </div>
+        <h1>Dockerized Flask App</h1>
+        <p class="subtitle">Continuous Integration and Deployment automated with GitHub Actions and Docker Hub.</p>
+        
+        <div class="info-grid">
+            <div class="card">
+                <div class="title">App Version</div>
+                <div class="val">{{ version }}</div>
+            </div>
+            <div class="card">
+                <div class="title">Environment</div>
+                <div class="val">{{ environment }}</div>
+            </div>
+            <div class="card">
+                <div class="title">Container Hostname</div>
+                <div class="val">{{ hostname }}</div>
+            </div>
+            <div class="card">
+                <div class="title">CI/CD Engine</div>
+                <div class="val">GitHub Actions</div>
+            </div>
+        </div>
+
+        <div class="links">
+            <a href="/health" class="btn" target="_blank">Health Check API</a>
+            <a href="/api/info" class="btn btn-secondary" target="_blank">System Info API</a>
+        </div>
+
+        <footer>
+            <span>Deployed with Docker Hub</span>
+            <span>WSGI: Gunicorn</span>
+        </footer>
+    </div>
+</body>
+</html>
